@@ -1,17 +1,18 @@
 // Import express
 const express = require("express");
 
-// Create an express app
+// Create express app
 const app = express();
 
 
-// Middleware to parse JSON
+// Middleware parse JSON
 app.use(express.json());
 
-// Define a simple route
+// route
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
+
 
 // Start the server
 const PORT = 3000;
