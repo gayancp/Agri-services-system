@@ -1,21 +1,17 @@
-// Import express
-const express = require("express");
+import { connectDB } from './configs/db.js';
+import express from "express";
 
-// Create express app
+const PORT = 3000;
 const app = express();
 
-
-// Middleware parse JSON
 app.use(express.json());
 
-// route
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.status(200).send("Hello, World!");
 });
 
-
-// Start the server
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("Server started on PORT:", PORT);
+  });
 });
